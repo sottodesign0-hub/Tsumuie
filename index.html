@@ -271,6 +271,9 @@
       position: relative; z-index: 1;
       padding: 7% 6%;
       max-width: 780px;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
     }
     .imagine-label {
       font-size: .68rem; font-weight: 700; letter-spacing: .2em;
@@ -292,12 +295,14 @@
       display: flex; align-items: baseline; gap: .75rem;
       font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
       font-size: 1.05rem; color: rgba(255,255,255,.85); line-height: 1.7;
+      min-width: 0;
     }
     .imagine-scene::before {
       content: '—';
       color: var(--green); flex-shrink: 0; font-size: .9rem;
     }
-    .imagine-scene-nowrap { white-space: nowrap; font-size: clamp(.68rem, 2.3vw, 1.05rem); }
+    .imagine-scene-nowrap { white-space: nowrap; font-size: clamp(.68rem, 2.3vw, 1.05rem); overflow-wrap: break-word; }
+    .mob-nowrap { white-space: nowrap; }
     .imagine-bottom {
       border-top: 1px solid rgba(255,255,255,.12); padding-top: 2rem;
       font-size: .92rem; color: rgba(255,255,255,.6); line-height: 1.9;
@@ -470,6 +475,7 @@
       .co-av { margin: 0 auto; }
       .co-tags { justify-content: center; }
       .imagine-scene-nowrap { white-space: normal; font-size: .78rem; }
+      .mob-nowrap { white-space: normal; }
       .si-mob-break { display: inline; }
       .im-mob-break { display: inline; }
       .co-mob-break { display: inline; }
@@ -478,6 +484,13 @@
     @media (max-width: 480px) {
       .region-grid { grid-template-columns: repeat(2,1fr); }
       .closing-cta { flex-direction: column; align-items: center; }
+      .ben-grid { grid-template-columns: 1fr; }
+      .flow-steps { grid-template-columns: 1fr; gap: 3rem 0; }
+      .f-step:nth-child(1)::after,
+      .f-step:nth-child(3)::after {
+        content: '↓'; top: auto; right: auto; left: 50%; bottom: -1.6rem;
+        transform: translateX(-50%);
+      }
     }
 
   </style>
@@ -562,7 +575,7 @@
   <div class="imagine-bg"></div>
   <div class="imagine-content">
     <span class="imagine-label">Chapter 02 — あなたの空き家が主役になる瞬間</span>
-    <h2 class="imagine-title">想像してみてください。<br><span style="white-space:nowrap;">ずっと静かだった<em>あの家</em>に明かりが灯り——</span></h2>
+    <h2 class="imagine-title">想像してみてください。<br><span class="mob-nowrap">ずっと静かだった<em>あの家</em>に明かりが灯り——</span></h2>
     <div class="imagine-scenes">
       <p class="imagine-scene">子どもの声が聞こえてくる。</p>
       <p class="imagine-scene">庭に小さな花が植えられる。</p>
@@ -571,7 +584,7 @@
     </div>
     <div class="imagine-bottom">
       Tsumuieは、ただ空き家を「片付ける」サービスではありません。<br>
-      オーナー様の大切な家に、<br class="im-mob-break"><strong>次の住人の暮らしと夢を重ねていく</strong><span style="white-space:nowrap;">仕組みです。</span><br>
+      オーナー様の大切な家に、<br class="im-mob-break"><strong>次の住人の暮らしと夢を重ねていく</strong><span class="mob-nowrap">仕組みです。</span><br>
       住まい方の分だけ、家の物語も広がっていきます。
     </div>
   </div>
@@ -640,7 +653,7 @@
     <div class="benefits-intro-text">
       <span class="sec-label">オーナー様へ / For Property Owners</span>
       <h2 class="sec-title">オーナー様が<br>ワクワクできる理由</h2>
-      <p>大切な空き家が、賃料収入を生みながら、<span style="white-space:nowrap;">次の世代に受け継がれていく</span><br>——そんな新しい選択肢があります。</p>
+      <p>大切な空き家が、賃料収入を生みながら、<span class="mob-nowrap">次の世代に受け継がれていく</span><br>——そんな新しい選択肢があります。</p>
     </div>
   </div>
   <div class="ben-grid">
@@ -699,7 +712,7 @@
       <span class="f-badge">0年目</span>
       <div class="f-num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 22V12h6v10"/></svg></div>
       <h4>賃貸運用</h4>
-      <p>入居者との契約が成立し、新生活が<span style="white-space:nowrap;">スタートします。</span></p>
+      <p>入居者との契約が成立し、新生活が<span class="mob-nowrap">スタートします。</span></p>
     </div>
     <div class="f-step">
       <span class="f-badge">1〜10年</span>
