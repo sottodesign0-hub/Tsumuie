@@ -224,7 +224,7 @@
       color: var(--dark); margin-bottom: 2rem;
     }
     .si-body p {
-      font-size: .95rem; color: var(--mid);
+      font-size: clamp(.75rem, 3.6vw, .95rem); color: var(--mid);
       line-height: 2; margin-bottom: 1rem;
     }
     .si-body p:last-child { margin-bottom: 0; }
@@ -307,7 +307,7 @@
     .mob-nowrap { white-space: nowrap; }
     .imagine-bottom {
       border-top: 1px solid rgba(255,255,255,.12); padding-top: 2rem;
-      font-size: .92rem; color: rgba(255,255,255,.6); line-height: 1.9;
+      font-size: clamp(.65rem, 2.9vw, .92rem); color: rgba(255,255,255,.6); line-height: 1.9;
       max-width: 560px;
     }
     .imagine-bottom strong { color: rgba(255,255,255,.9); }
@@ -325,7 +325,7 @@
     .prop-soon { text-align: center; max-width: 760px; margin: 0 auto; padding: 3.5rem 2rem; border: 1px dashed var(--border); border-radius: 20px; background: var(--white); }
     .prop-soon-badge { display: inline-block; padding: .3rem .9rem; border-radius: 999px; background: rgba(43,191,173,.1); color: var(--green); font-size: .7rem; font-weight: 700; letter-spacing: .1em; margin-bottom: 1.25rem; }
     .prop-soon-title { font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--dark); margin-bottom: .85rem; }
-    .prop-soon-body { font-size: .88rem; color: var(--mid); line-height: 1.9; margin-bottom: 1.75rem; }
+    .prop-soon-body { font-size: clamp(.6rem, 2.7vw, .88rem); color: var(--mid); line-height: 1.9; margin-bottom: 1.75rem; }
 
     /* ══ OWNER BENEFITS ══ */
     .benefits { background: var(--warm); padding: 80px 5%; }
@@ -484,6 +484,7 @@
       .co-mob-break { display: inline; }
       .cl-mob-break { display: inline; }
       .sc-mob-break { display: inline; }
+      .split-cta { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .region-grid { grid-template-columns: repeat(2,1fr); }
@@ -540,9 +541,9 @@
   <div class="story-intro">
     <div class="si-text">
       <p class="si-chapter">Chapter 01 — 空き家に、続きの物語を</p>
-      <h2 class="si-title">その空き家、実はまだ終わっていません。</h2>
+      <h2 class="si-title">その空き家、<br>実はまだ終わっていません。</h2>
       <div class="si-body">
-        <p>次の住人と一緒に、<br class="si-mob-break"><strong>新しい物語を紡いでいく場所</strong>に<br class="si-mob-break">変わることができます。<br>それがTsumuie（つむいえ）です。</p>
+        <p>次の住人と一緒に、<br class="si-mob-break"><strong>新しい物語を紡いでいく場所</strong>に変わることができます。<br>それがTsumuie（つむいえ）です。</p>
       </div>
     </div>
   </div>
@@ -553,7 +554,7 @@
       <div>
         <p class="sc-label">住まいを探している方へ</p>
         <h3>賃貸で住みながら、<br>持家になる選択を。</h3>
-        <p>ローン審査不要・頭金<br class="sc-mob-break">ゼロで将来の持家を目指す</p>
+        <p>ローン審査不要・頭金ゼロで将来の持家を目指す</p>
       </div>
       <div class="sc-btns">
         <a href="#properties" class="sc-btn g">物件一覧を見る</a>
@@ -563,7 +564,7 @@
     <div class="sc-box">
       <div>
         <p class="sc-label">空き家オーナーの方へ</p>
-        <h3>空き家に、次の物語を<br>重ねて<br class="sc-mob-break">いきませんか。</h3>
+        <h3>空き家に、次の物語を重ねていきませんか。</h3>
         <p>賃料収入＋将来売却先が最初から確定する仕組み</p>
       </div>
       <div class="sc-btns">
@@ -589,7 +590,7 @@
     <div class="imagine-bottom">
       Tsumuieは、ただ空き家を「片付ける」サービスではありません。<br>
       オーナー様の大切な家に、<br class="im-mob-break"><strong>次の住人の暮らしと夢を重ねていく</strong><span class="mob-nowrap">仕組みです。</span><br>
-      住まい方の分だけ、家の物語も<br class="im-mob-break">広がっていきます。
+      住まい方の分だけ、家の物語も広がっていきます。
     </div>
   </div>
 </div>
@@ -607,7 +608,7 @@
   <div class="prop-soon">
     <span class="prop-soon-badge">COMING SOON</span>
     <p class="prop-soon-title">掲載物件、準備中です。</p>
-    <p class="prop-soon-body">大阪・兵庫を中心に、<br class="ps-mob-break">Tsumuieで暮らせる物件を随時追加していきます。<br>「このエリアで探したい」「こんな家に住みたい」など、公開前のご相談もLINEで承っています。</p>
+    <p class="prop-soon-body">大阪・兵庫を中心に、<br class="ps-mob-break">Tsumuieで暮らせる物件を随時追加していきます。<br>「このエリアで探したい」「こんな家に住みたい」など、<br>公開前のご相談もLINEで承っています。</p>
     <a href="https://lin.ee/pZ7B2cG" target="_blank" rel="noopener" class="btn-green">LINEで相談する</a>
   </div>
 </section>
@@ -657,7 +658,7 @@
     <div class="benefits-intro-text">
       <span class="sec-label">オーナー様へ / For Property Owners</span>
       <h2 class="sec-title">オーナー様が<br>ワクワクできる理由</h2>
-      <p>大切な空き家が、賃料収入を生みながら、<span class="mob-nowrap">次の世代に受け継がれていく</span><br>——そんな新しい選択肢があります。</p>
+      <p>大切な空き家が、賃料収入を生みながら、<br class="cl-mob-break"><span class="mob-nowrap">次の世代に受け継がれていく</span><br>——そんな新しい選択肢があります。</p>
     </div>
   </div>
   <div class="ben-grid">
