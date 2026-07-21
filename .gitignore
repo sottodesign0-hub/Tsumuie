@@ -7,3 +7,12 @@ image/debug_result.png
 空家オーナーページ/robots.txt
 空家オーナーページ/sitemap.xml
 空家オーナーページ/Tsumuieセミナーデータ.html
+
+# 別リポジトリ（Tsumuieorner）— 取り込まない
+空家オーナーページ/
+.DS_Store
+image/.DS_Store
+
+# 背景写真の元PNG（重いので最適化後のjpgのみ追跡）
+image/haikei/*.png
+image/haikei/akiya.png
