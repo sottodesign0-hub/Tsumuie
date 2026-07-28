@@ -230,6 +230,28 @@
       50%      { transform: scaleY(1);   opacity: 1;   }
     }
     @media (prefers-reduced-motion: reduce) { .hero-scroll::after { animation: none; } }
+    /* 明るい背景の上でのスクロール誘導（冒頭イントロ用） */
+    .hero-scroll.on-light { color: var(--mid); }
+    .hero-scroll.on-light::after { background: rgba(0,0,0,.32); }
+
+    /* ══ INTRO（冒頭：Tsumuieとは＋家族イラスト） ══ */
+    .intro-firstview {
+      position: relative;
+      min-height: 100vh; min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 100px 7% 60px; text-align: center;
+      background: var(--white);
+    }
+    .intro-firstview .hero-scroll { position: static; transform: none; bottom: auto; left: auto; margin-top: 3.25rem; }
+    .intro-content { width: 100%; max-width: 860px; margin: 0 auto; }
+    .intro-title {
+      font-size: clamp(1.3rem, 3.4vw, 2.1rem);
+      font-weight: 700; line-height: 1.5; color: var(--dark);
+      letter-spacing: .01em; margin-bottom: 2.4rem;
+      white-space: nowrap;
+    }
+    .intro-mark { display: block; height: clamp(72px, 12vw, 120px); width: auto; margin: 0 auto; }
 
     /* ══ STORY INTRO ══ */
     .story-intro {
@@ -289,6 +311,22 @@
     .sc-btn.o { background: var(--orange); color: #fff; }
     .sc-btn.g-outline { background: none; color: var(--green); border: 1.5px solid var(--green); padding: .58rem 1.4rem; }
     .sc-btn.o-outline { background: none; color: var(--orange); border: 1.5px solid var(--orange); padding: .58rem 1.4rem; }
+
+    /* ══ REALITY（旧ヒーローのコピーを移設したセクション） ══ */
+    .reality {
+      background:
+        linear-gradient(rgba(28,26,23,.58), rgba(28,26,23,.58)),
+        url('image/haikei/8.jpg') center/cover fixed;
+      padding: 96px 7%; text-align: center;
+    }
+    .reality-inner { max-width: 720px; margin: 0 auto; }
+    .reality-lead {
+      font-size: clamp(1.05rem, 2.6vw, 1.6rem);
+      color: #fff; font-weight: 500; line-height: 1.95; margin: 0;
+      text-shadow: 0 2px 22px rgba(0,0,0,.5);
+    }
+    .reality-lead em { font-style: normal; color: #ffb566; font-weight: 700; }
+    .reality-logo { height: 1em; width: auto; vertical-align: -.14em; margin: 0 .08em; }
 
     /* ══ IMAGINATION SCENE ══ */
     .imagine {
@@ -513,7 +551,7 @@
       .split-cta { grid-template-columns: 1fr; }
       /* モバイルは fixed 背景が重い・iOS で無効なため通常スクロールに */
       .story-intro, .split-cta, .properties, .benefits, .lessees,
-      .flow, .region, .closing, .company, .imagine-bg { background-attachment: scroll; }
+      .flow, .region, .closing, .company, .reality, .imagine-bg { background-attachment: scroll; }
     }
     @media (max-width: 480px) {
       .region-grid { grid-template-columns: repeat(2,1fr); }
@@ -553,29 +591,18 @@
   <a href="#company" onclick="closeMob()">運営会社</a>
 </div>
 
-<!-- ══ HERO ══ -->
+<!-- ══ HERO / INTRO ══ -->
 <div class="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-firstview">
-    <div class="hero-content">
-      <h1 class="hero-lead">鍵をかけたまま、時間だけが過ぎていく実家。<br>「売るしかないのかな」「でも、なんだか寂しいな」<br>——その気持ち、<em><img src="image/IMG_6493-tight.png" alt="Tsumuie" class="hero-logo-inline">が一緒に向き合います。</em></h1>
+  <div class="intro-firstview">
+    <div class="intro-content">
+      <h1 class="intro-title">賃貸×将来取得の、新しい空き家活用。</h1>
+      <img src="image/logo-mark-transparent.png" alt="Tsumuie" class="intro-mark">
     </div>
-    <a href="#storyIntro" class="hero-scroll" aria-label="下へスクロール"><span>Scroll</span></a>
-  </div>
-
-  <!-- ══ STORY INTRO ══ -->
-  <div class="story-intro" id="storyIntro">
-    <div class="si-text">
-      <p class="si-chapter">空き家に、続きの物語を</p>
-      <h2 class="si-title">その空き家、<br>実はまだ終わっていません。</h2>
-      <div class="si-body">
-        <p>次の住人と一緒に、<br class="si-mob-break"><strong>新しい物語を紡いでいく場所</strong>に変わることができます。<br>それがTsumuie（つむいえ）です。</p>
-      </div>
-    </div>
+    <a href="#storyStart" class="hero-scroll on-light" aria-label="下へスクロール"><span>Scroll</span></a>
   </div>
 
   <!-- ══ SPLIT CTA ══ -->
-  <div class="split-cta">
+  <div class="split-cta" id="storyStart">
     <div class="sc-box">
       <div>
         <p class="sc-label">住まいを探している方へ</p>
