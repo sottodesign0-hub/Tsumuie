@@ -245,6 +245,18 @@
     }
     .intro-firstview .hero-scroll { position: static; transform: none; bottom: auto; left: auto; margin-top: 3.25rem; }
     .intro-content { width: 100%; max-width: 860px; margin: 0 auto; }
+    .intro-eyebrow {
+      font-size: clamp(.82rem, 2.4vw, 1.1rem);
+      font-weight: 700; color: var(--mid);
+      letter-spacing: .04em; line-height: 1.5;
+      margin-bottom: 1.15rem;
+    }
+    .intro-catch {
+      font-size: clamp(1.4rem, 4vw, 2.45rem);
+      font-weight: 800; line-height: 1.42; color: var(--dark);
+      letter-spacing: .008em; margin-bottom: 2.6rem;
+    }
+    .intro-catch em { font-style: normal; color: var(--orange); }
     .intro-title {
       font-size: clamp(1.3rem, 3.4vw, 2.1rem);
       font-weight: 700; line-height: 1.5; color: var(--dark);
@@ -595,7 +607,8 @@
 <div class="hero">
   <div class="intro-firstview">
     <div class="intro-content">
-      <h1 class="intro-title">賃貸×将来取得の、新しい空き家活用。</h1>
+      <p class="intro-eyebrow">賃貸×将来取得の、新しい空き家活用。</p>
+      <h1 class="intro-catch"><em>10年</em>住めば、&ldquo;我が家&rdquo;になる。</h1>
       <img src="image/logo-mark-transparent.png" alt="Tsumuie" class="intro-mark">
     </div>
     <a href="#storyStart" class="hero-scroll on-light" aria-label="下へスクロール"><span>Scroll</span></a>
