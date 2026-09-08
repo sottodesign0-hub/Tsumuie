@@ -306,8 +306,8 @@
     .split-cta { display: grid; grid-template-columns: 1fr 1fr; background: linear-gradient(rgba(255,255,255,.91), rgba(255,255,255,.94)), url('image/haikei/6.jpg') center/cover fixed; }
     .sc-box {
       padding: 3rem 6%;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1.5rem; flex-wrap: wrap;
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+      gap: 1.4rem; text-align: left;
       border-top: 1px solid var(--border);
     }
     .sc-box:first-child { border-right: 1px solid var(--border); }
@@ -316,7 +316,7 @@
     .sc-box:last-child  .sc-label { color: var(--orange); }
     .sc-box h3 { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; color: var(--dark); margin-bottom: .3rem; }
     .sc-box p { font-size: .82rem; color: var(--sub); }
-    .sc-btns { display: flex; flex-direction: column; gap: .6rem; flex-shrink: 0; }
+    .sc-btns { display: flex; flex-direction: row; flex-wrap: wrap; gap: .6rem; flex-shrink: 0; }
     .sc-btn { flex-shrink: 0; padding: .65rem 1.4rem; border-radius: 999px; text-decoration: none; font-size: .82rem; font-weight: 700; transition: opacity .2s; white-space: nowrap; text-align: center; }
     .sc-btn:hover { opacity: .8; }
     .sc-btn.g { background: var(--green); color: #fff; }
@@ -619,7 +619,7 @@
     <div class="sc-box">
       <div>
         <p class="sc-label">住まいを探している方へ</p>
-        <h3>賃貸で住みながら、<br>持家になる選択を。</h3>
+        <h3>賃貸で住みながら、持家になる選択を。</h3>
         <p>ローン審査不要・頭金ゼロで将来の持家を目指す</p>
       </div>
       <div class="sc-btns">
