@@ -327,8 +327,8 @@
     return `<button class="card" data-id="${esc(p.id)}" data-tab="akiya" style="animation-delay:${i*0.07}s">
       <div class="card-img">${img}<span class="badge b-orange">${esc(p.status)}</span><span class="card-no">${no2(i)}</span></div>
       <div class="card-body">
-        <span class="card-area">${ICON_PIN}${esc([p.pref,p.area].filter(Boolean).join(' '))}${p.type ? '　'+esc(p.type) : ''}</span>
-        <h3 class="card-title">こんな空き家を探しています</h3>
+        <span class="card-area">${ICON_PIN}${esc([p.pref,p.area].filter(Boolean).join(' '))}</span>
+        <h3 class="card-title">${esc(p.type || '空き家')}を探しています</h3>
         ${p.station ? `<span class="card-station">最寄り駅：${esc(p.station)}</span>` : ''}
         <ul class="card-wishes">${wishes}</ul>
         <div class="tags">${tags}</div>
@@ -401,11 +401,12 @@
       const wishes = (p.wishes||[]).map(w=>`<li>${esc(w)}</li>`).join('');
       const rows = [];
       rows.push(['希望エリア', [p.pref,p.area].filter(Boolean).join(' ')]);
+      if(p.type) rows.push(['希望種別', p.type]);
       if(p.station) rows.push(['最寄り', p.station]);
       const spec = rows.map(r=>`<tr><th>${esc(r[0])}</th><td>${esc(r[1])}</td></tr>`).join('');
       const tags = (p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
       inner = `<span class="card-area">${ICON_PIN}${esc([p.pref,p.area].filter(Boolean).join(' '))}</span>
-        <h2 class="modal-title">こんな空き家を探しています</h2>
+        <h2 class="modal-title">${esc(p.type || '空き家')}を探しています</h2>
         <table class="spec">${spec}</table>
         <ul class="card-wishes" style="border-top:none;padding-top:0;margin-bottom:1.2rem;">${wishes}</ul>
         <p class="modal-desc">${esc(p.desc)}</p>
