@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物件一覧｜入居者募集・空き家募集｜Tsumuie（ツムイエ）</title>
+<meta name="description" content="Tsumuie対応物件の一覧。賃貸で住みながら将来の持ち家を目指せる空き家（入居者募集）と、入居希望者が待っている空き家の募集（空き家募集）を掲載しています。大阪・兵庫（神戸）を中心に関西全域。">
+<link rel="canonical" href="https://sottodesign0-hub.github.io/Tsumuie/物件一覧/">
+<style>
+  :root{
+    --font-sans: system-ui, -apple-system, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', Meiryo, sans-serif;
+    --font-serif: var(--font-sans); /* 他のTsumuieページと統一：見出しもOS標準ゴシック */
+    --green:#2bbfad; --green-d:#1f9c8d; --orange:#f5831a;
+    --dark:#1c1a17; --mid:#5c5850; --sub:#9a948c;
+    --border:#e7e2db; --hair:#efeae3;
+    --bg:#f6f4f0; --warm:#f0ebe3; --white:#fff;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  body{margin:0;font-family:var(--font-sans);color:var(--dark);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3{text-wrap:balance;margin:0;font-weight:inherit;}
+  p{text-wrap:pretty;margin:0;}
+
+  /* ── HEADER ── */
+  header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(246,244,240,.82);
+    border-bottom:1px solid var(--hair);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);height:60px;
+    display:flex;align-items:center;padding:0 clamp(16px,4vw,40px);gap:1.4rem;}
+  .h-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0;}
+  .h-logo img{height:32px;width:auto;}
+  .h-nav{display:flex;gap:0;list-style:none;flex:1;margin:0;padding:0;}
+  .h-nav a{display:block;padding:0 .9rem;height:60px;line-height:60px;font-size:.78rem;font-weight:500;letter-spacing:.02em;
+    text-decoration:none;color:var(--mid);border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;}
+  .h-nav a:hover{color:var(--dark);}
+  .h-nav a.is-here{color:var(--dark);border-bottom-color:var(--green);font-weight:700;}
+  .h-cta-line{display:inline-flex;align-items:center;gap:.4rem;background:#06C755;color:#fff;
+    font-size:.76rem;font-weight:700;padding:.4rem 1rem;border-radius:999px;text-decoration:none;flex-shrink:0;transition:opacity .2s;}
+  .h-cta-line:hover{opacity:.85;}
+  .h-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;flex-shrink:0;}
+  .h-ham span{display:block;width:22px;height:1.5px;background:var(--dark);transition:all .3s;}
+  .h-ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .h-ham.open span:nth-child(2){opacity:0;}
+  .h-ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  .mob-menu{display:none;position:fixed;top:60px;left:0;right:0;z-index:190;background:var(--white);
+    border-bottom:1px solid var(--border);padding:1rem 5%;flex-direction:column;}
+  .mob-menu.open{display:flex;}
+  .mob-menu a{padding:.85rem 0;border-bottom:1px solid var(--hair);text-decoration:none;color:var(--dark);font-size:.92rem;}
+  .mob-menu a:last-child{border-bottom:none;}
+  @media(max-width:880px){.h-nav{display:none;}.h-ham{display:flex;}}
+
+  /* ── PAGE HEAD ── */
+  .page-head{padding:118px clamp(16px,5vw,40px) 44px;text-align:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:1rem;font-size:.66rem;font-weight:600;letter-spacing:.42em;
+    text-transform:uppercase;color:var(--sub);margin-bottom:1.5rem;}
+  .eyebrow::before,.eyebrow::after{content:'';width:34px;height:1px;background:var(--border);display:block;}
+  .page-title{font-family:var(--font-serif);font-size:clamp(1.8rem,4.4vw,2.7rem);font-weight:700;color:var(--dark);
+    line-height:1.35;letter-spacing:.03em;}
+  .page-lead{font-size:.9rem;color:var(--mid);margin-top:1.1rem;letter-spacing:.02em;}
+
+  /* ── TABS ── */
+  .tabs{display:flex;justify-content:center;gap:0;margin:2.2rem auto .4rem;padding:.4rem;
+    background:var(--white);border:1px solid var(--hair);border-radius:999px;width:max-content;max-width:92%;
+    box-shadow:0 6px 20px rgba(28,26,23,.05);}
+  .tab{appearance:none;border:none;background:transparent;color:var(--mid);font-family:inherit;
+    font-size:clamp(.8rem,2.6vw,.92rem);font-weight:700;letter-spacing:.04em;cursor:pointer;
+    padding:.72rem clamp(1.1rem,4vw,2rem);border-radius:999px;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;}
+  .tab .tab-count{font-size:.66rem;font-weight:700;background:var(--warm);color:var(--sub);border-radius:999px;
+    min-width:1.5em;height:1.5em;display:inline-flex;align-items:center;justify-content:center;padding:0 .35em;transition:all .25s;}
+  .tab:hover{color:var(--dark);}
+  .tab.active{background:var(--dark);color:#fff;box-shadow:0 4px 14px rgba(28,26,23,.22);}
+  .tab.active.t-akiya{background:var(--orange);box-shadow:0 4px 14px rgba(245,131,26,.3);}
+  .tab.active .tab-count{background:rgba(255,255,255,.24);color:#fff;}
+
+  /* ── FILTER BAR ── */
+  .filters{max-width:1120px;margin:1.6rem auto .4rem;padding:0 clamp(16px,5vw,40px);}
+  .filter-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.55rem;}
+  .filter-label{font-size:.66rem;font-weight:700;color:var(--sub);letter-spacing:.14em;text-transform:uppercase;min-width:3.6em;}
+  .chip{appearance:none;border:1px solid var(--border);background:transparent;color:var(--mid);
+    font-family:inherit;font-size:.76rem;letter-spacing:.02em;cursor:pointer;padding:.34rem .9rem;border-radius:999px;transition:all .18s;}
+  .chip:hover{border-color:var(--sub);color:var(--dark);}
+  .chip.on{background:var(--green);border-color:var(--green);color:#fff;font-weight:700;}
+  .result-count{max-width:1120px;margin:1.2rem auto .4rem;padding:0 clamp(16px,5vw,40px);
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);}
+
+  /* ── GRID & CARDS ── */
+  .wrap{max-width:1120px;margin:0 auto;padding:.6rem clamp(16px,5vw,40px) 10px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:clamp(1.4rem,3vw,2.4rem);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+  .card{background:var(--white);border:1px solid var(--hair);border-radius:4px;overflow:hidden;text-align:left;
+    box-shadow:0 1px 2px rgba(28,26,23,.04);cursor:pointer;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+    display:flex;flex-direction:column;width:100%;padding:0;font-family:inherit;opacity:0;animation:fadeUp .6s cubic-bezier(.2,.7,.2,1) forwards;}
+  .card:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(28,26,23,.13);}
+  .card-img{position:relative;aspect-ratio:3/2;overflow:hidden;background:linear-gradient(135deg,var(--warm),#e7efec);}
+  .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1);}
+  .card:hover .card-img img{transform:scale(1.07);}
+  .card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.14) 0%,transparent 30%,transparent 72%,rgba(0,0,0,.22) 100%);pointer-events:none;}
+  .card-ph{display:flex;align-items:center;justify-content:center;}
+  .card-ph svg{width:52px;height:52px;color:var(--sub);opacity:.45;}
+  .badge{position:absolute;top:14px;left:14px;z-index:2;background:rgba(255,255,255,.92);color:var(--dark);font-size:.67rem;
+    font-weight:700;letter-spacing:.1em;padding:.36rem .85rem;border-radius:999px;backdrop-filter:blur(4px);box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  .badge.b-green{background:var(--green);color:#fff;}
+  .badge.b-orange{background:var(--orange);color:#fff;}
+  .card-no{position:absolute;bottom:12px;right:16px;z-index:2;font-family:var(--font-serif);font-size:1.5rem;
+    color:#fff;letter-spacing:.05em;opacity:.92;text-shadow:0 2px 10px rgba(0,0,0,.4);line-height:1;}
+  .card-body{padding:1.5rem 1.55rem 1.7rem;flex:1;display:flex;flex-direction:column;}
+  .card-area{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;color:var(--green-d);
+    letter-spacing:.1em;}
+  .t-akiya-accent .card-area{color:var(--orange);}
+  .card-area svg{width:12px;height:12px;flex-shrink:0;}
+  .card-title{font-family:var(--font-serif);font-size:1.18rem;font-weight:700;color:var(--dark);margin:.6rem 0 .9rem;letter-spacing:.02em;line-height:1.55;}
+  .card-rule{height:1px;background:var(--hair);margin:0 0 .85rem;}
+  .card-meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .6rem;font-size:.78rem;color:var(--mid);margin-bottom:.8rem;letter-spacing:.02em;}
+  .card-meta .price{font-size:1.02rem;font-weight:700;color:var(--dark);letter-spacing:.01em;}
+  .card-meta .price small{font-size:.68rem;font-weight:500;color:var(--sub);margin-left:.1em;}
+  .card-meta .dot{color:var(--border);}
+  .card-desc{font-size:.82rem;color:var(--mid);line-height:1.85;margin-bottom:1.1rem;flex:1;}
+  .card-wishes{list-style:none;margin:0 0 1.1rem;padding:.9rem 0 0;border-top:1px solid var(--hair);display:flex;flex-direction:column;gap:.5rem;}
+  .card-wishes li{position:relative;padding-left:1.4rem;font-size:.82rem;color:var(--mid);line-height:1.6;}
+  .card-wishes li::before{content:'';position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--orange);}
+  .tags{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:auto;}
+  .tag{font-size:.69rem;letter-spacing:.04em;padding:.26rem .7rem;border-radius:2px;background:rgba(43,191,173,.08);color:var(--green-d);}
+  .t-akiya-accent .tag{background:rgba(245,131,26,.1);color:var(--orange);}
+
+  /* ── EMPTY STATE ── */
+  .empty{text-align:center;max-width:620px;margin:1rem auto;padding:3.4rem 2rem;border:1px solid var(--hair);border-radius:4px;background:var(--white);}
+  .empty-title{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;margin-bottom:.8rem;letter-spacing:.02em;}
+  .empty-body{font-size:.85rem;color:var(--mid);line-height:1.95;}
+
+  /* ── TAB CTA ── */
+  .tab-cta{max-width:720px;margin:3.6rem auto 0;padding:3rem clamp(16px,5vw,40px) 1rem;text-align:center;}
+  .tab-cta-title{font-family:var(--font-serif);font-size:clamp(1.2rem,3.2vw,1.5rem);font-weight:700;margin-bottom:1rem;letter-spacing:.02em;line-height:1.55;}
+  .tab-cta-body{font-size:.86rem;color:var(--mid);line-height:1.95;margin-bottom:1.8rem;}
+  .btn{display:inline-block;font-weight:700;font-size:.88rem;letter-spacing:.04em;text-decoration:none;
+    padding:.95rem 2.1rem;border-radius:2px;transition:opacity .2s,transform .2s,box-shadow .2s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-green{background:var(--green);color:#fff;box-shadow:0 8px 20px rgba(43,191,173,.28);}
+  .btn-green:hover{box-shadow:0 12px 26px rgba(43,191,173,.36);}
+  .btn-orange{background:var(--orange);color:#fff;box-shadow:0 8px 20px rgba(245,131,26,.28);}
+  .btn-orange:hover{box-shadow:0 12px 26px rgba(245,131,26,.36);}
+  .btn-ghost{background:transparent;color:var(--dark);border:1px solid var(--border);margin-left:.7rem;}
+  .btn-ghost:hover{border-color:var(--dark);}
+  @media(max-width:560px){.btn-ghost{margin-left:0;margin-top:.8rem;}}
+
+  /* ── MODAL ── */
+  .modal{display:none;position:fixed;inset:0;z-index:300;background:rgba(28,26,23,.5);backdrop-filter:blur(3px);
+    align-items:center;justify-content:center;padding:4%;}
+  .modal.open{display:flex;animation:fadeUp .3s ease;}
+  .modal-box{background:var(--white);border-radius:6px;max-width:580px;width:100%;max-height:90vh;overflow:auto;position:relative;
+    box-shadow:0 40px 80px rgba(0,0,0,.4);}
+  .modal-close{position:absolute;top:14px;right:14px;z-index:3;background:rgba(255,255,255,.92);border:none;
+    width:38px;height:38px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;color:var(--dark);box-shadow:0 2px 10px rgba(0,0,0,.18);}
+  .modal-img{aspect-ratio:16/10;background:linear-gradient(135deg,var(--warm),#e7efec);overflow:hidden;}
+  .modal-img img{width:100%;height:100%;object-fit:cover;}
+  .modal-body{padding:1.9rem 2rem 2.1rem;}
+  .modal-body .card-area{margin-bottom:.5rem;}
+  .modal-title{font-family:var(--font-serif);font-size:1.45rem;font-weight:700;margin-bottom:1.1rem;letter-spacing:.02em;line-height:1.5;}
+  .spec{width:100%;border-collapse:collapse;margin:.5rem 0 1.3rem;font-size:.85rem;}
+  .spec th{text-align:left;color:var(--sub);font-weight:700;letter-spacing:.08em;padding:.6rem .8rem .6rem 0;white-space:nowrap;vertical-align:top;width:6em;}
+  .spec td{padding:.6rem 0;border-bottom:1px solid var(--hair);color:var(--dark);}
+  .modal-desc{font-size:.88rem;color:var(--mid);line-height:1.95;margin-bottom:1.4rem;}
+  .modal-actions{display:flex;flex-wrap:wrap;gap:.7rem;}
+  .modal-actions .btn-ghost{margin:0;}
+
+  /* ── FOOTER ── */
+  footer{background:var(--dark);color:#cfc9c0;padding:3.6rem 5% 1.8rem;margin-top:4rem;}
+  .foot-inner{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:2.4rem;justify-content:space-between;}
+  .foot-brand img{height:30px;margin-bottom:1rem;filter:brightness(0) invert(1);opacity:.9;}
+  .foot-brand p{font-size:.8rem;line-height:1.95;}
+  .foot-brand a{color:inherit;}
+  .foot-nav{display:flex;flex-direction:column;gap:.7rem;}
+  .foot-nav a{font-size:.82rem;color:#cfc9c0;text-decoration:none;letter-spacing:.03em;transition:color .2s;}
+  .foot-nav a:hover{color:#fff;}
+  .foot-copy{max-width:1120px;margin:2.4rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);
+    font-size:.72rem;letter-spacing:.06em;color:#8c877f;text-align:center;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <button class="h-ham" id="ham"><span></span><span></span><span></span></button>
+  <a href="../" class="h-logo"><img src="../image/logo-mark-transparent.png" alt="Tsumuie"></a>
+  <ul class="h-nav">
+    <li><a href="../">トップ</a></li>
+    <li><a href="./" class="is-here">物件一覧</a></li>
+    <li><a href="../入居者ページ/">住まいを探している方へ</a></li>
+    <li><a href="https://sottodesign0-hub.github.io/Tsumuieorner/" target="_blank" rel="noopener">空き家オーナーの方へ</a></li>
+    <li><a href="../#flow">仕組み</a></li>
+    <li><a href="../#faq">FAQ</a></li>
+  </ul>
+  <a href="https://lin.ee/pZ7B2cG" target="_blank" rel="noopener" class="h-cta-line">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    LINE相談
+  </a>
+</header>
+<div class="mob-menu" id="mobMenu">
+  <a href="../" onclick="closeMob()">トップ</a>
+  <a href="./" onclick="closeMob()">物件一覧</a>
+  <a href="../入居者ページ/" onclick="closeMob()">住まいを探している方へ</a>
+  <a href="https://sottodesign0-hub.github.io/Tsumuieorner/" target="_blank" rel="noopener" onclick="closeMob()">空き家オーナーの方へ</a>
+  <a href="../#flow" onclick="closeMob()">仕組み</a>
+  <a href="../#faq" onclick="closeMob()">FAQ</a>
+</div>
+
+<!-- PAGE HEAD -->
+<div class="page-head">
+  <span class="eyebrow">Properties</span>
+  <h1 class="page-title">Tsumuie 物件一覧</h1>
+  <p class="page-lead">賃貸で住みながら、将来は持ち家に。大阪・兵庫（神戸）を中心に、関西全域で掲載しています。</p>
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" data-tab="nyukyosha" id="tabN">入居者募集<span class="tab-count" id="cntN">0</span></button>
+    <button class="tab t-akiya" data-tab="akiya" id="tabA">空き家募集<span class="tab-count" id="cntA">0</span></button>
+  </div>
+</div>
+
+<!-- FILTERS (入居者募集 only) -->
+<div class="filters" id="filters"></div>
+<div class="result-count" id="resultCount"></div>
+
+<!-- GRID -->
+<div class="wrap">
+  <div class="grid" id="grid"></div>
+</div>
+
+<!-- TAB CTA -->
+<div class="tab-cta" id="tabCta"></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="../image/logo-mark-transparent.png" alt="Tsumuie">
+      <p>空き家に続きの物語を。<br>賃貸で住みながら、持家という選択を。<br>
+        <small style="opacity:.6;">株式会社SOTTO ／ お問い合わせ：<a href="mailto:sottodesign0@gmail.com">sottodesign0@gmail.com</a></small></p>
+    </div>
+    <nav class="foot-nav">
+      <a href="../">トップ</a>
+      <a href="./">物件一覧</a>
+      <a href="../入居者ページ/">住まいを探している方へ</a>
+      <a href="https://sottodesign0-hub.github.io/Tsumuieorner/" target="_blank" rel="noopener">空き家オーナーの方へ</a>
+      <a href="https://sottodesign0-hub.github.io/Tsumuieorner/register/" target="_blank" rel="noopener">空き家を登録・相談する</a>
+    </nav>
+  </div>
+  <div class="foot-copy">© 2025 Tsumuie / 株式会社SOTTO. All rights reserved.</div>
+</footer>
+
+<script src="../物件データ.js"></script>
+<script>
+  /* 画像パスはサイト直下基準なので、このページ(物件一覧/)からは ../ を補う */
+  const BASE = "../";
+  const DATA = window.TSUMUIE_DATA || {nyukyosha:[], akiya:[]};
+  const ICON_PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>';
+  const ICON_HOUSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>';
+  const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const yen = n => '¥' + Number(n).toLocaleString('ja-JP');
+  const no2 = i => String(i+1).padStart(2,'0');
+
+  let current = 'nyukyosha';
+  const state = { type:'all', area:'all' };
+
+  const el = id => document.getElementById(id);
+  el('cntN').textContent = DATA.nyukyosha.length;
+  el('cntA').textContent = DATA.akiya.length;
+
+  /* ---- 絞り込みUI（入居者募集のみ） ---- */
+  function buildFilters(){
+    const box = el('filters');
+    if(current !== 'nyukyosha'){ box.innerHTML = ''; return; }
+    const items = DATA.nyukyosha;
+    const types = [...new Set(items.map(x=>x.type).filter(Boolean))];
+    const areas = [...new Set(items.map(x=>x.pref).filter(Boolean))];
+    const row = (label, key, opts) => {
+      if(!opts.length) return '';
+      const chips = ['all', ...opts].map(v=>{
+        const on = state[key]===v ? ' on' : '';
+        const txt = v==='all' ? 'すべて' : v;
+        return `<button class="chip${on}" data-key="${key}" data-val="${esc(v)}">${esc(txt)}</button>`;
+      }).join('');
+      return `<div class="filter-row"><span class="filter-label">${label}</span>${chips}</div>`;
+    };
+    box.innerHTML = row('種別','type',types) + row('エリア','area',areas);
+    box.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+      state[c.dataset.key] = c.dataset.val;
+      buildFilters(); render();
+    }));
+  }
+
+  /* ---- カード描画 ---- */
+  function nyukyoCard(p, i){
+    const badgeCls = p.status==='募集中' ? ' b-green' : '';
+    const img = p.image
+      ? `<img src="${BASE}${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">`
+      : `<div class="card-ph">${ICON_HOUSE}</div>`;
+    const meta = [];
+    if(p.rent) meta.push(`<span class="price">${yen(p.rent)}<small>/月</small></span>`); else meta.push(`<span class="price" style="font-size:.9rem">賃料応談</span>`);
+    if(p.madori) meta.push(`<span class="dot">/</span><span>${esc(p.madori)}</span>`);
+    if(p.menseki) meta.push(`<span class="dot">/</span><span>${esc(p.menseki)}</span>`);
+    if(p.chiku) meta.push(`<span class="dot">/</span><span>${esc(p.chiku)}</span>`);
+    const tags = (p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
+    const area = [p.pref, p.city].filter(Boolean).join(' ');
+    return `<button class="card" data-id="${esc(p.id)}" data-tab="nyukyosha" style="animation-delay:${i*0.07}s">
+      <div class="card-img">${img}<span class="badge${badgeCls}">${esc(p.status)}</span><span class="card-no">${no2(i)}</span></div>
+      <div class="card-body">
+        <span class="card-area">${ICON_PIN}${esc(area)}</span>
+        <h3 class="card-title">${esc(p.title)}</h3>
+        <div class="card-rule"></div>
+        <div class="card-meta">${meta.join('')}</div>
+        <p class="card-desc">${esc(p.desc)}</p>
+        <div class="tags">${tags}</div>
+      </div></button>`;
+  }
+  function akiyaCard(p, i){
+    const img = p.image
+      ? `<img src="${BASE}${esc(p.image)}" alt="${esc(p.area)}の入居希望者" loading="lazy">`
+      : `<div class="card-ph">${ICON_HOUSE}</div>`;
+    const wishes = (p.wishes||[]).slice(0,3).map(w=>`<li>${esc(w)}</li>`).join('');
+    const tags = (p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
+    return `<button class="card" data-id="${esc(p.id)}" data-tab="akiya" style="animation-delay:${i*0.07}s">
+      <div class="card-img">${img}<span class="badge b-orange">${esc(p.status)}</span><span class="card-no">${no2(i)}</span></div>
+      <div class="card-body">
+        <span class="card-area">${ICON_PIN}${esc([p.pref,p.area].filter(Boolean).join(' '))}</span>
+        <h3 class="card-title">こんな空き家を探しています</h3>
+        <ul class="card-wishes">${wishes}</ul>
+        <div class="tags">${tags}</div>
+      </div></button>`;
+  }
+
+  function render(){
+    const grid = el('grid');
+    const cta = el('tabCta');
+    const rc = el('resultCount');
+    grid.className = 'grid' + (current==='akiya' ? ' t-akiya-accent' : '');
+
+    if(current==='nyukyosha'){
+      let items = DATA.nyukyosha.slice();
+      if(state.type!=='all') items = items.filter(x=>x.type===state.type);
+      if(state.area!=='all') items = items.filter(x=>x.pref===state.area);
+      rc.textContent = items.length ? `${items.length}件の空き家` : '';
+      grid.innerHTML = items.length
+        ? items.map(nyukyoCard).join('')
+        : `<div class="empty" style="grid-column:1/-1;"><p class="empty-title">条件に合う物件がありません</p><p class="empty-body">絞り込みを変えるか、「このエリアで探したい」というご希望をお聞かせください。ご希望に合わせて空き家をお探しします。</p></div>`;
+      cta.innerHTML = `<p class="tab-cta-title">お探しのエリア・条件はありますか？</p>
+        <p class="tab-cta-body">掲載前の物件や、ご希望に合わせた空き家探しも承っています。<br>まずはお気軽にご相談ください。</p>
+        <a href="https://lin.ee/pZ7B2cG" target="_blank" rel="noopener" class="btn btn-green">LINEで相談する</a>
+        <a href="../入居者ページ/" class="btn btn-ghost">住みたい人の仕組みを見る</a>`;
+    } else {
+      const items = DATA.akiya.slice();
+      rc.textContent = items.length ? `${items.length}組の入居希望者が空き家を待っています` : '';
+      grid.innerHTML = items.length
+        ? items.map(akiyaCard).join('')
+        : `<div class="empty" style="grid-column:1/-1;"><p class="empty-title">現在募集中の案件はありません</p><p class="empty-body">空き家の活用をお考えのオーナー様は、お気軽にご相談ください。</p></div>`;
+      cta.innerHTML = `<p class="tab-cta-title">条件に合う空き家を、お持ちではありませんか？</p>
+        <p class="tab-cta-body">Tsumuieでは、入居希望者に合わせて空き家を探しています。<br>使い道に迷っている空き家があれば、まずはご相談ください。</p>
+        <a href="https://sottodesign0-hub.github.io/Tsumuieorner/register/" target="_blank" rel="noopener" class="btn btn-orange">空き家を登録・相談する</a>
+        <a href="https://sottodesign0-hub.github.io/Tsumuieorner/" target="_blank" rel="noopener" class="btn btn-ghost">オーナー向けの説明を見る</a>`;
+    }
+    grid.querySelectorAll('.card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.tab, c.dataset.id)));
+  }
+
+  /* ---- 詳細モーダル ---- */
+  function openModal(tab, id){
+    const list = tab==='nyukyosha' ? DATA.nyukyosha : DATA.akiya;
+    const p = list.find(x=>x.id===id);
+    if(!p) return;
+    const img = p.image
+      ? `<img src="${BASE}${esc(p.image)}" alt="">`
+      : `<div class="card-ph" style="height:100%">${ICON_HOUSE}</div>`;
+    const accentCls = tab==='akiya' ? 't-akiya-accent' : '';
+    let inner;
+    if(tab==='nyukyosha'){
+      const rows = [];
+      rows.push(['所在地', [p.pref,p.city].filter(Boolean).join(' ')]);
+      if(p.station) rows.push(['最寄り', p.station]);
+      rows.push(['賃料', p.rent ? `${yen(p.rent)} / 月` : '応談']);
+      if(p.type) rows.push(['種別', p.type]);
+      if(p.madori) rows.push(['間取り', p.madori]);
+      if(p.menseki) rows.push(['延床', p.menseki]);
+      if(p.chiku) rows.push(['築年', p.chiku]);
+      const spec = rows.map(r=>`<tr><th>${esc(r[0])}</th><td>${esc(r[1])}</td></tr>`).join('');
+      const tags = (p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
+      inner = `<span class="card-area">${ICON_PIN}${esc([p.pref,p.city].filter(Boolean).join(' '))}</span>
+        <h2 class="modal-title">${esc(p.title)}</h2>
+        <table class="spec">${spec}</table>
+        <p class="modal-desc">${esc(p.desc)}</p>
+        <div class="tags" style="margin-bottom:1.4rem;">${tags}</div>
+        <div class="modal-actions">
+          <a href="https://lin.ee/pZ7B2cG" target="_blank" rel="noopener" class="btn btn-green">この物件をLINEで相談</a>
+          <a href="mailto:sottodesign0@gmail.com?subject=${encodeURIComponent('物件のお問い合わせ：'+p.title)}" class="btn btn-ghost">メールで問い合わせ</a>
+        </div>`;
+    } else {
+      const wishes = (p.wishes||[]).map(w=>`<li>${esc(w)}</li>`).join('');
+      const rows = [];
+      rows.push(['希望エリア', [p.pref,p.area].filter(Boolean).join(' ')]);
+      if(p.station) rows.push(['最寄り', p.station]);
+      const spec = rows.map(r=>`<tr><th>${esc(r[0])}</th><td>${esc(r[1])}</td></tr>`).join('');
+      const tags = (p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
+      inner = `<span class="card-area">${ICON_PIN}${esc([p.pref,p.area].filter(Boolean).join(' '))}</span>
+        <h2 class="modal-title">こんな空き家を探しています</h2>
+        <table class="spec">${spec}</table>
+        <ul class="card-wishes" style="border-top:none;padding-top:0;margin-bottom:1.2rem;">${wishes}</ul>
+        <p class="modal-desc">${esc(p.desc)}</p>
+        <div class="tags" style="margin-bottom:1.4rem;">${tags}</div>
+        <div class="modal-actions">
+          <a href="https://sottodesign0-hub.github.io/Tsumuieorner/register/" target="_blank" rel="noopener" class="btn btn-orange">空き家を登録・相談する</a>
+          <a href="https://lin.ee/pZ7B2cG" target="_blank" rel="noopener" class="btn btn-ghost">LINEで相談</a>
+        </div>`;
+    }
+    el('modalBox').className = 'modal-box ' + accentCls;
+    el('modalBox').innerHTML = `<button class="modal-close" id="mClose" aria-label="閉じる">×</button>
+      <div class="modal-img">${img}</div><div class="modal-body">${inner}</div>`;
+    el('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    el('mClose').addEventListener('click', closeModal);
+  }
+  function closeModal(){ el('modal').classList.remove('open'); document.body.style.overflow=''; }
+  el('modal').addEventListener('click', e=>{ if(e.target===el('modal')) closeModal(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+  /* ---- タブ切り替え ---- */
+  function switchTab(tab){
+    current = tab;
+    state.type='all'; state.area='all';
+    el('tabN').classList.toggle('active', tab==='nyukyosha');
+    el('tabA').classList.toggle('active', tab==='akiya');
+    buildFilters(); render();
+  }
+  el('tabN').addEventListener('click', ()=>switchTab('nyukyosha'));
+  el('tabA').addEventListener('click', ()=>switchTab('akiya'));
+
+  /* URLハッシュ #akiya で空き家募集タブを開く */
+  if(location.hash==='#akiya'){ switchTab('akiya'); } else { buildFilters(); render(); }
+
+  /* ハンバーガー */
+  const ham=el('ham'), mob=el('mobMenu');
+  ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
+  function closeMob(){ham.classList.remove('open');mob.classList.remove('open');}
+</script>
+</body>
+</html>

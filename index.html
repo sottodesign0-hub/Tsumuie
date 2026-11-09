@@ -425,6 +425,34 @@
     .prop-foot-note { font-size: clamp(.78rem, 2.6vw, .86rem); color: var(--mid); line-height: 1.9; margin-bottom: 1.5rem; }
     .prop-grid-single { max-width: 420px; }
 
+    /* ══ GATEWAY（入居者募集 / 空き家募集 への入口カード）══ */
+    .gateway { padding: 80px 5%; background: linear-gradient(rgba(250,249,247,.88), rgba(250,249,247,.94)), url('image/haikei/4.jpg') center/cover fixed; }
+    .gw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; max-width: 1020px; margin: 2.5rem auto 0; }
+    .gw-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 8px 24px rgba(28,26,23,.05); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s; }
+    .gw-card:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(28,26,23,.13); }
+    .gw-card.gw-green { border-top: 3px solid var(--green); }
+    .gw-card.gw-orange { border-top: 3px solid var(--orange); }
+    .gw-img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: linear-gradient(135deg, var(--warm), #eaf2ee); }
+    .gw-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+    .gw-card:hover .gw-img img { transform: scale(1.05); }
+    .gw-card.gw-orange .gw-img { background: linear-gradient(135deg, #eef6ef, #e5f1ec); }
+    .gw-card.gw-orange .gw-img img { object-fit: contain; padding: .6rem; }
+    .gw-badge { position: absolute; top: 14px; left: 14px; display: inline-flex; align-items: center; gap: .45rem; background: var(--green); color: #fff; font-size: .76rem; font-weight: 700; letter-spacing: .04em; padding: .42rem .95rem; border-radius: 999px; box-shadow: 0 3px 10px rgba(0,0,0,.14); }
+    .gw-badge.o { background: var(--orange); }
+    .gw-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 0 rgba(255,255,255,.6); animation: gwPulse 2s infinite; }
+    @keyframes gwPulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.55); } 70% { box-shadow: 0 0 0 6px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
+    .gw-body { padding: 1.7rem 1.75rem 1.9rem; display: flex; flex-direction: column; flex: 1; }
+    .gw-eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .14em; margin-bottom: .55rem; }
+    .gw-green .gw-eyebrow { color: var(--green); }
+    .gw-orange .gw-eyebrow { color: var(--orange); }
+    .gw-title { font-family: var(--font-sans); font-size: clamp(1.3rem, 3vw, 1.55rem); font-weight: 700; color: var(--dark); margin-bottom: .55rem; }
+    .gw-loc { display: inline-flex; align-items: center; gap: .35rem; font-size: .8rem; font-weight: 700; color: var(--green); letter-spacing: .03em; margin-bottom: .75rem; }
+    .gw-loc.o { color: var(--orange); }
+    .gw-loc svg { width: 13px; height: 13px; flex-shrink: 0; }
+    .gw-desc { font-size: .87rem; color: var(--mid); line-height: 1.85; margin-bottom: 1.5rem; }
+    .gw-card .recruit-btns { margin-top: auto; }
+    @media (max-width: 720px) { .gw-grid { grid-template-columns: 1fr; } }
+
     /* ══ OWNER BENEFITS ══ */
     .benefits { background: linear-gradient(rgba(245,240,232,.88), rgba(245,240,232,.93)), url('image/haikei/3.jpg') center/cover fixed; padding: 80px 5%; }
     .benefits-intro { max-width: 1080px; margin: 0 auto 4rem; text-align: center; }
@@ -622,7 +650,7 @@
   <ul class="h-nav">
     <li><a href="https://sottodesign0-hub.github.io/Tsumuieorner/" target="_blank" rel="noopener" class="owner-link">▶ 空き家オーナーの方へ</a></li>
     <li><a href="入居者ページ/" class="seeker-link">▶ 住まいを探している方へ</a></li>
-    <li><a href="#properties">物件を探す</a></li>
+    <li><a href="物件一覧/">物件を探す</a></li>
     <li><a href="#lessee">住みたい人</a></li>
     <li><a href="#flow">仕組み</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -636,7 +664,7 @@
 <div class="mob-menu" id="mobMenu">
   <a href="https://sottodesign0-hub.github.io/Tsumuieorner/" target="_blank" rel="noopener" onclick="closeMob()">▶ 空き家オーナーの方へ</a>
   <a href="入居者ページ/" onclick="closeMob()">▶ 住まいを探している方へ</a>
-  <a href="#properties" onclick="closeMob()">物件を探す</a>
+  <a href="物件一覧/" onclick="closeMob()">物件を探す</a>
   <a href="#lessee" onclick="closeMob()">住みたい人</a>
   <a href="#flow" onclick="closeMob()">仕組み</a>
   <a href="#faq" onclick="closeMob()">FAQ</a>
@@ -651,123 +679,53 @@
       <h1 class="intro-catch"><em>10年</em>住めば、&ldquo;我が家&rdquo;になる。</h1>
       <img src="image/logo-mark-transparent.png" alt="Tsumuie" class="intro-mark">
     </div>
-    <a href="#storyStart" class="hero-scroll on-light" aria-label="下へスクロール"><span>Scroll</span></a>
+    <a href="#properties" class="hero-scroll on-light" aria-label="下へスクロール"><span>Scroll</span></a>
   </div>
 
-  <!-- ══ 募集（入居者 / 空き家） ══ -->
-  <div class="recruit" id="storyStart">
-    <div class="recruit-grid">
-      <article class="recruit-card rc-green">
-        <span class="recruit-eyebrow">住まいを探している方へ</span>
-        <h3 class="recruit-title">入居者募集</h3>
-        <p class="recruit-desc">賃貸で住みながら、将来は持ち家に。<br>Tsumuieで暮らせる住まいをご紹介しています。</p>
-        <div class="recruit-btns">
-          <a href="入居者ページ/" class="recruit-btn g">住まいを探す</a>
-          <a href="#properties" class="recruit-btn g-outline">物件一覧を見る</a>
-        </div>
-      </article>
-      <article class="recruit-card rc-orange">
-        <span class="recruit-eyebrow">空き家オーナーの方へ</span>
-        <h3 class="recruit-title">空き家募集</h3>
-        <p class="recruit-desc">使っていない空き家を、賃料収入を生みながら次の世代へ。<br>活用のご相談を承っています。</p>
-        <div class="recruit-btns">
-          <a href="https://sottodesign0-hub.github.io/Tsumuieorner/register/" target="_blank" rel="noopener" class="recruit-btn o">空き家を登録・相談する</a>
-          <a href="https://sottodesign0-hub.github.io/Tsumuieorner/" target="_blank" rel="noopener" class="recruit-btn o-outline">詳しく見る</a>
-        </div>
-      </article>
-    </div>
-  </div>
 </div>
 
-<!-- ══ PROPERTIES ══ -->
-<section class="properties" id="properties">
+<!-- ══ PROPERTIES（入居者募集 / 空き家募集 への入口） ══ -->
+<section class="gateway" id="properties">
   <div class="sec-header sec-header-center">
     <div>
-      <span class="sec-label">物語の舞台となる空き家 / Properties</span>
-      <h2 class="sec-title">Tsumuie対応物件</h2>
-      <p class="sec-desc">現在、掲載に向けて物件を準備中です。</p>
+      <span class="sec-label">物件を探す / Properties</span>
+      <h2 class="sec-title">Tsumuieの物件</h2>
+      <p class="sec-desc">住まいを探している方も、空き家を活かしたい方も。<br>気になる方から、物件一覧で詳しくご覧いただけます。</p>
     </div>
   </div>
 
-  <div class="prop-grid">
-    <article class="prop-card">
-      <div class="prop-card-img">
-        <img src="空き家紹介/tatsuno-web.jpg" alt="兵庫県たつの市・龍野城下町の空き家">
-        <span class="prop-card-badge">準備中</span>
+  <div class="gw-grid">
+    <article class="gw-card gw-green">
+      <div class="gw-img">
+        <img src="空き家紹介/tatsuno-web.jpg" alt="入居者募集中の空き家（兵庫県たつの市）">
+        <span class="gw-badge">入居者募集中</span>
       </div>
-      <div class="prop-card-body">
-        <span class="prop-card-area"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>兵庫県たつの市</span>
-        <h3 class="prop-card-title">龍野城下町の町家</h3>
-        <p class="prop-card-desc">歴史ある城下町の一角に佇む、味わい深い空き家。Tsumuieでの活用に向けて準備を進めています。公開前のご相談も承っています。</p>
-      </div>
-    </article>
-
-    <article class="prop-card">
-      <div class="prop-card-img prop-card-ph">
-        <span class="prop-card-badge">COMING SOON</span>
-        <svg class="prop-ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
-      </div>
-      <div class="prop-card-body">
-        <span class="prop-card-area is-muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>エリア調整中</span>
-        <h3 class="prop-card-title">近日公開</h3>
-        <p class="prop-card-desc">大阪・兵庫を中心に、新しい物件を準備しています。「このエリアで探したい」などのご相談も承っています。</p>
-      </div>
-    </article>
-
-    <article class="prop-card">
-      <div class="prop-card-img prop-card-ph">
-        <span class="prop-card-badge">COMING SOON</span>
-        <svg class="prop-ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
-      </div>
-      <div class="prop-card-body">
-        <span class="prop-card-area is-muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>エリア調整中</span>
-        <h3 class="prop-card-title">近日公開</h3>
-        <p class="prop-card-desc">物語の舞台となる空き家を、随時追加していきます。気になるエリアがあれば、お気軽にお問い合わせください。</p>
-      </div>
-    </article>
-  </div>
-
-  <div class="prop-foot">
-    <p class="prop-foot-note">大阪・兵庫を中心に、<br class="ps-mob-break">Tsumuieで暮らせる物件を随時追加していきます。<br>公開前のご相談もお気軽にどうぞ。</p>
-    <a href="https://sottodesign0-hub.github.io/Tsumuieorner/contact/" target="_blank" rel="noopener" class="btn-green">お問い合わせフォームで相談する</a>
-  </div>
-</section>
-
-<!-- ══ WANTED（逆引き募集・入居希望者が先にいる空き家） ══ -->
-<section class="wanted" id="wanted">
-  <div class="sec-header sec-header-center">
-    <div>
-      <span class="sec-label">入居希望者が待つ空き家 / Wanted</span>
-      <h2 class="sec-title">探している空き家</h2>
-      <p class="sec-desc">物件が見つかる前から「ここで暮らしたい」という入居希望者がいます。<br>条件に合う空き家をお持ちのオーナー様を募集しています。</p>
-    </div>
-  </div>
-
-  <div class="wanted-grid wanted-grid-single">
-    <article class="wanted-card">
-      <div class="wanted-card-media">
-        <img class="wanted-illust" src="空き家探し中/katano-web.png" alt="大型犬と一緒に暮らしたい入居希望者のイメージ">
-      </div>
-      <div class="wanted-card-body">
-        <span class="wanted-status"><span class="wanted-dot"></span>入居希望者 待機中</span>
-        <div>
-          <span class="wanted-area-label">ご希望エリア</span>
-          <span class="wanted-area-name">大阪府 交野市・枚方市</span>
-          <p class="wanted-station">最寄り駅：交野市駅・河内磐船駅・郡津駅</p>
+      <div class="gw-body">
+        <span class="gw-eyebrow">住まいを探している方へ</span>
+        <h3 class="gw-title">入居者募集</h3>
+        <span class="gw-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>兵庫県たつの市</span>
+        <p class="gw-desc">賃貸で住みながら、将来は持ち家に。Tsumuieで暮らせる住まいをご紹介しています。</p>
+        <div class="recruit-btns">
+          <a href="物件一覧/" class="recruit-btn g">詳しく見る</a>
         </div>
-        <ul class="wanted-wishes">
-          <li>1階に広いリビングのある家</li>
-          <li>大型犬と一緒に暮らしたい</li>
-          <li>一室をサロンスペースとして使いたい</li>
-        </ul>
       </div>
     </article>
-  </div>
 
-  <div class="wanted-cta">
-    <p class="wanted-cta-title">条件に合う空き家を、お持ちではありませんか？</p>
-    <p class="wanted-cta-body">Tsumuieでは、こうした入居希望者に合わせて空き家を探しています。<br>使い道に迷っている空き家があれば、まずはお気軽にご相談ください。</p>
-    <a href="https://sottodesign0-hub.github.io/Tsumuieorner/register/" target="_blank" rel="noopener" class="btn-orange">空き家を登録・相談する（オーナーの方）</a>
+    <article class="gw-card gw-orange">
+      <div class="gw-img">
+        <img src="空き家探し中/katano-web.png" alt="空き家募集・入居希望者が待っています（大阪府交野市）">
+        <span class="gw-badge o">空き家募集中</span>
+      </div>
+      <div class="gw-body">
+        <span class="gw-eyebrow">空き家オーナーの方へ</span>
+        <h3 class="gw-title">空き家募集</h3>
+        <span class="gw-loc o"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>大阪府交野市</span>
+        <p class="gw-desc">「ここで暮らしたい」と待つ入居希望者がいます。条件に合う空き家をお持ちの方を募集中です。</p>
+        <div class="recruit-btns">
+          <a href="物件一覧/#akiya" class="recruit-btn o">詳しく見る</a>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -1015,7 +973,7 @@
       </a>
     </div>
     <nav class="foot-nav">
-      <a href="#properties">物件を探す</a>
+      <a href="物件一覧/">物件を探す</a>
       <a href="#lessee">住みたい人</a>
       <a href="#flow">仕組み</a>
       <a href="#faq">FAQ</a>
