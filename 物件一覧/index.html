@@ -108,7 +108,8 @@
     letter-spacing:.1em;}
   .t-akiya-accent .card-area{color:var(--orange);}
   .card-area svg{width:12px;height:12px;flex-shrink:0;}
-  .card-title{font-family:var(--font-serif);font-size:1.18rem;font-weight:700;color:var(--dark);margin:.6rem 0 .9rem;letter-spacing:.02em;line-height:1.55;}
+  .card-station{display:block;font-size:.76rem;color:var(--sub);letter-spacing:.02em;margin-top:.4rem;line-height:1.6;}
+  .card-title{font-family:var(--font-serif);font-size:1.18rem;font-weight:700;color:var(--dark);margin:.5rem 0 .9rem;letter-spacing:.02em;line-height:1.55;}
   .card-rule{height:1px;background:var(--hair);margin:0 0 .85rem;}
   .card-meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .6rem;font-size:.78rem;color:var(--mid);margin-bottom:.8rem;letter-spacing:.02em;}
   .card-meta .price{font-size:1.02rem;font-weight:700;color:var(--dark);letter-spacing:.01em;}
@@ -309,6 +310,7 @@
       <div class="card-img">${img}<span class="badge${badgeCls}">${esc(p.status)}</span><span class="card-no">${no2(i)}</span></div>
       <div class="card-body">
         <span class="card-area">${ICON_PIN}${esc(area)}</span>
+        ${p.station ? `<span class="card-station">最寄り駅：${esc(p.station)}</span>` : ''}
         <h3 class="card-title">${esc(p.title)}</h3>
         <div class="card-rule"></div>
         <div class="card-meta">${meta.join('')}</div>
@@ -326,6 +328,7 @@
       <div class="card-img">${img}<span class="badge b-orange">${esc(p.status)}</span><span class="card-no">${no2(i)}</span></div>
       <div class="card-body">
         <span class="card-area">${ICON_PIN}${esc([p.pref,p.area].filter(Boolean).join(' '))}</span>
+        ${p.station ? `<span class="card-station">最寄り駅：${esc(p.station)}</span>` : ''}
         <h3 class="card-title">こんな空き家を探しています</h3>
         <ul class="card-wishes">${wishes}</ul>
         <div class="tags">${tags}</div>
