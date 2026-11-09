@@ -327,9 +327,9 @@
     return `<button class="card" data-id="${esc(p.id)}" data-tab="akiya" style="animation-delay:${i*0.07}s">
       <div class="card-img">${img}<span class="badge b-orange">${esc(p.status)}</span><span class="card-no">${no2(i)}</span></div>
       <div class="card-body">
-        <span class="card-area">${ICON_PIN}${esc([p.pref,p.area].filter(Boolean).join(' '))}</span>
-        ${p.station ? `<span class="card-station">最寄り駅：${esc(p.station)}</span>` : ''}
+        <span class="card-area">${ICON_PIN}${esc([p.pref,p.area].filter(Boolean).join(' '))}${p.type ? '　'+esc(p.type) : ''}</span>
         <h3 class="card-title">こんな空き家を探しています</h3>
+        ${p.station ? `<span class="card-station">最寄り駅：${esc(p.station)}</span>` : ''}
         <ul class="card-wishes">${wishes}</ul>
         <div class="tags">${tags}</div>
       </div></button>`;

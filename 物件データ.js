@@ -61,6 +61,7 @@ window.TSUMUIE_DATA = {
       status: "入居希望者 待機中",
       pref: "大阪府",                    // エリア絞り込みに使用
       area: "交野市・枚方市",
+      type: "戸建て",                    // 希望する建物種別（エリア行に併記）
       station: "交野市駅・河内磐船駅・郡津駅",
       tags: ["大型犬可", "広いリビング", "サロン利用"],
       image: "空き家探し中/katano-web.png",
