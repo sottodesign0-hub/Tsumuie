@@ -121,6 +121,8 @@
   .card-wishes{list-style:none;margin:0 0 1.1rem;padding:.9rem 0 0;border-top:1px solid var(--hair);display:flex;flex-direction:column;gap:.5rem;}
   .card-wishes li{position:relative;padding-left:1.4rem;font-size:.82rem;color:var(--mid);line-height:1.6;}
   .card-wishes li::before{content:'';position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--orange);}
+  .card-more{display:inline-flex;align-self:flex-start;margin-top:.3rem;font-size:.8rem;font-weight:700;color:var(--orange);border:1px solid var(--orange);border-radius:4px;padding:.5rem 1.1rem;letter-spacing:.02em;transition:background .25s,color .25s;}
+  .card:hover .card-more{background:var(--orange);color:#fff;}
   .tags{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:auto;}
   .tag{font-size:.69rem;letter-spacing:.04em;padding:.26rem .7rem;border-radius:2px;background:rgba(43,191,173,.08);color:var(--green-d);}
   .t-akiya-accent .tag{background:rgba(245,131,26,.1);color:var(--orange);}
@@ -326,7 +328,8 @@
       : `<div class="card-ph">${ICON_HOUSE}</div>`;
     const wishes = (p.wishes||[]).slice(0,3).map(w=>`<li>${esc(w)}</li>`).join('');
     const tags = (p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
-    return `<button class="card" data-id="${esc(p.id)}" data-tab="akiya" style="animation-delay:${i*0.07}s">
+    const more = p.detailUrl ? `<span class="card-more">詳しくみる →</span>` : '';
+    return `<button class="card" data-id="${esc(p.id)}" data-tab="akiya" data-detail="${esc(p.detailUrl||'')}" style="animation-delay:${i*0.07}s">
       <div class="card-img">${img}<span class="badge b-orange">${esc(p.status)}</span><span class="card-no">${no2(i)}</span></div>
       <div class="card-body">
         <span class="card-area">${ICON_PIN}${esc([p.pref,p.area].filter(Boolean).join(' '))}</span>
@@ -334,6 +337,7 @@
         ${p.station ? `<span class="card-station">最寄り駅：${esc(p.station)}</span>` : ''}
         <ul class="card-wishes">${wishes}</ul>
         <div class="tags">${tags}</div>
+        ${more}
       </div></button>`;
   }
 
@@ -368,7 +372,10 @@
         <a href="https://sottodesign0-hub.github.io/Tsumuieorner/register/" target="_blank" rel="noopener" class="btn btn-orange">空き家を登録・相談する</a>
         <a href="https://sottodesign0-hub.github.io/Tsumuieorner/" target="_blank" rel="noopener" class="btn btn-ghost">オーナー向けの説明を見る</a>`;
     }
-    grid.querySelectorAll('.card').forEach(c=>c.addEventListener('click',()=>openModal(c.dataset.tab, c.dataset.id)));
+    grid.querySelectorAll('.card').forEach(c=>c.addEventListener('click',()=>{
+      if(c.dataset.detail){ window.open(c.dataset.detail, '_blank', 'noopener'); }
+      else { openModal(c.dataset.tab, c.dataset.id); }
+    }));
   }
 
   /* ---- 詳細モーダル ---- */
