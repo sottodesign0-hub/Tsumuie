@@ -355,10 +355,10 @@
       grid.innerHTML = items.length
         ? items.map(nyukyoCard).join('')
         : `<div class="empty" style="grid-column:1/-1;"><p class="empty-title">条件に合う物件がありません</p><p class="empty-body">絞り込みを変えるか、「このエリアで探したい」というご希望をお聞かせください。ご希望に合わせて空き家をお探しします。</p></div>`;
-      cta.innerHTML = `<p class="tab-cta-title">お探しのエリア・条件はありますか？</p>
-        <p class="tab-cta-body">掲載前の物件や、ご希望に合わせた空き家探しも承っています。<br>まずはお気軽にご相談ください。</p>
+      cta.innerHTML = `<p class="tab-cta-title">活用できる空き家を募集しています</p>
+        <p class="tab-cta-body">「ここで暮らしたい」と待つ入居希望者がいます。使われていない空き家があれば、ぜひお聞かせください。<br>条件に合う住まい手を、Tsumuieがご紹介します。</p>
         <a href="https://lin.ee/pZ7B2cG" target="_blank" rel="noopener" class="btn btn-green">LINEで相談する</a>
-        <a href="../入居者ページ/" class="btn btn-ghost">住みたい人の仕組みを見る</a>`;
+        <a href="https://sottodesign0-hub.github.io/Tsumuieorner/register/" target="_blank" rel="noopener" class="btn btn-ghost">空き家を登録・相談する</a>`;
     } else {
       let items = DATA.akiya.slice();
       if(state.type!=='all') items = items.filter(x=>x.type===state.type);
