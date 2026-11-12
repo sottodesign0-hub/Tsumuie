@@ -72,7 +72,7 @@ window.TSUMUIE_DATA = {
         "一室をサロンスペースとして使いたい"
       ],
       desc: "物件が見つかる前から「ここで暮らしたい」という入居希望者が待っています。条件に合う空き家をお持ちのオーナー様を募集しています。",
-      detailUrl: "https://claude.ai/code/artifact/3e1de08a-09f3-402b-92e8-a11f6ad6fa94"   // 詳細ページ（カードクリック／「詳しくみる」で遷移）
+      detailUrl: "https://sottodesign0-hub.github.io/Tsumuie/nyukyosha/katano-dog/"   // 詳細ページ（カードクリック／「詳しくみる」で遷移）※自前ホスティング（Claudeの枠が付かない）
     }
 
     /* ↓↓ 2件目以降はこのテンプレをコピーして使ってください ↓↓
