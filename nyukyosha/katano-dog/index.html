@@ -11,10 +11,11 @@ body { margin:0; }
 .wrap {
   background:var(--ground); color:var(--ink);
   font-family:"Hiragino Kaku Gothic ProN","Yu Gothic Medium","Yu Gothic","Noto Sans JP",sans-serif;
-  font-size:15px; line-height:1.78; letter-spacing:.015em;
+  font-size:16px; line-height:1.82; letter-spacing:.015em;
   -webkit-font-smoothing:antialiased; overflow-x:hidden;
 }
 .serif { font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP","Shippori Mincho",serif; }
+.nb { display:inline-block; } /* 文節単位で折り返す（語中改行を防ぐ） */
 h1,h2,h3 { font-family:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP","Shippori Mincho",serif; font-weight:500; text-wrap:balance; }
 .eyebrow { font-size:.72rem; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); font-weight:600; }
 .tnum { font-variant-numeric:tabular-nums; }
@@ -139,6 +140,17 @@ footer a { color:#b6ac98; }
   .facts dl { grid-template-columns:1fr; }
   .facts dt { border-bottom:none; padding-bottom:0; }
   .hero-title { font-size:clamp(1.6rem,7vw,2.4rem); }
+  /* スマホで本文が小さすぎないよう底上げ */
+  .wrap { font-size:17px; line-height:1.9; }
+  .lead { font-size:1.12rem; }
+  .hero-lead { font-size:1.02rem; }
+  .want h3 { font-size:1.28rem; }
+  .want p { font-size:1.04rem; }
+  .facts dt { font-size:.94rem; }
+  .facts dd { font-size:1.04rem; }
+  .plist li span { font-size:1em; }
+  .cta p { font-size:1.04rem; }
+  .crumb { font-size:.8rem; }
 }
 
 /* ---- hero: horizontal, centered, photoless ---- */
@@ -189,7 +201,7 @@ footer a { color:#b6ac98; }
     <div class="hero-inner">
       <div class="eyebrow">大阪・交野市 ｜ 入居希望者 ｜ Tsumuie</div>
       <h1 class="hero-title">愛犬と、最後まで一緒にいられる家を。</h1>
-      <p class="hero-lead">まつ毛サロンを営んで、十年。<br>歳をとっていく愛犬と、これからの時間をちゃんと重ねられる家を、大阪・交野市で探しています。</p>
+      <p class="hero-lead"><span class="nb">まつ毛サロンを営んで、十年。</span><br><span class="nb">歳をとっていく愛犬と、</span><span class="nb">これからの時間をちゃんと重ねられる家を、</span><span class="nb">大阪・交野市で探しています。</span></p>
     </div>
   </header>
 
@@ -201,7 +213,7 @@ footer a { color:#b6ac98; }
       <span class="sect-no tnum">01</span>
       <span class="en">About</span>
     </div>
-      <p class="lead serif reveal">大阪・交野の街で、まつ毛サロンをはじめて今年で十年目を迎えます。<br>おかげさまでここまで続けてくることができました。</p>
+      <p class="lead serif reveal"><span class="nb">大阪・交野の街で、</span><span class="nb">まつ毛サロンをはじめて</span><span class="nb">今年で十年目を迎えます。</span><br><span class="nb">おかげさまで</span><span class="nb">ここまで続けてくることができました。</span></p>
       <div style="height:1.1em"></div>
       <div class="reveal intro">
         <p>これまでは、仕事場と住まいを別々にしてきました。日中はほとんどお店に出ているので、家で過ごせる時間は、思っていたよりずっと短い。</p>

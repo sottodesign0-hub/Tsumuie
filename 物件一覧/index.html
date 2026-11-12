@@ -133,6 +133,7 @@
   .empty-body{font-size:.85rem;color:var(--mid);line-height:1.95;}
 
   /* ── TAB CTA ── */
+  .nb{display:inline-block;} /* 文節単位で折り返す（語中改行を防ぐ） */
   .tab-cta{max-width:720px;margin:3.6rem auto 0;padding:3rem clamp(16px,5vw,40px) 1rem;text-align:center;}
   .tab-cta-title{font-family:var(--font-serif);font-size:clamp(1.2rem,3.2vw,1.5rem);font-weight:700;margin-bottom:1rem;letter-spacing:.02em;line-height:1.55;}
   .tab-cta-body{font-size:.86rem;color:var(--mid);line-height:1.95;margin-bottom:1.8rem;}
@@ -212,7 +213,7 @@
 <div class="page-head">
   <span class="eyebrow" style="letter-spacing:.24em;">Tsumuie一覧</span>
   <h1 class="page-title"><img src="../image/IMG_6493-tight.png" alt="Tsumuie" class="page-title-logo"></h1>
-  <p class="page-lead">「ここで暮らしたい人」と「活かしたい空き家」が出会う一覧です。大阪・兵庫（神戸）を中心に、関西全域から。</p>
+  <p class="page-lead">「ここで暮らしたい人」と「活かしたい空き家」が出会う一覧です。</p>
   <!-- TABS -->
   <div class="tabs">
     <button class="tab active" data-tab="nyukyosha" id="tabN">入居者募集<span class="tab-count" id="cntN">0</span></button>
@@ -355,8 +356,8 @@
       grid.innerHTML = items.length
         ? items.map(nyukyoCard).join('')
         : `<div class="empty" style="grid-column:1/-1;"><p class="empty-title">条件に合う物件がありません</p><p class="empty-body">絞り込みを変えるか、「このエリアで探したい」というご希望をお聞かせください。ご希望に合わせて空き家をお探しします。</p></div>`;
-      cta.innerHTML = `<p class="tab-cta-title">あなたの家の「次の物語」、一緒に考えます。</p>
-        <p class="tab-cta-body">実家が空き家になっている、相続した家をどうするか悩んでいる、管理が大変、なかなか売れない<br>——そんな方こそ、一度Tsumuieの話を聞いてみてください。<br><br><strong>住まい方の分だけ、家の物語も広がっていきます。</strong></p>
+      cta.innerHTML = `<p class="tab-cta-title"><span class="nb">あなたの家の</span><span class="nb">「次の物語」、</span><span class="nb">一緒に考えます。</span></p>
+        <p class="tab-cta-body"><span class="nb">実家が空き家になっている、</span><span class="nb">相続した家をどうするか悩んでいる、</span><span class="nb">管理が大変、</span><span class="nb">なかなか売れない</span><br><span class="nb">——そんな方こそ、</span><span class="nb">一度Tsumuieの話を聞いてみてください。</span><br><br><strong><span class="nb">住まい方の分だけ、</span><span class="nb">家の物語も広がっていきます。</span></strong></p>
         <a href="https://lin.ee/pZ7B2cG" target="_blank" rel="noopener" class="btn btn-green">LINEで相談する</a>
         <a href="https://sottodesign0-hub.github.io/Tsumuieorner/register/" target="_blank" rel="noopener" class="btn btn-ghost">空き家を登録・相談する</a>`;
     } else {
@@ -367,8 +368,8 @@
       grid.innerHTML = items.length
         ? items.map(akiyaCard).join('')
         : `<div class="empty" style="grid-column:1/-1;"><p class="empty-title">条件に合う案件がありません</p><p class="empty-body">絞り込みを変えてご覧ください。空き家の活用をお考えのオーナー様は、お気軽にご相談ください。</p></div>`;
-      cta.innerHTML = `<p class="tab-cta-title">条件に合う空き家を、お持ちではありませんか？</p>
-        <p class="tab-cta-body">Tsumuieでは、入居希望者に合わせて空き家を探しています。<br>使い道に迷っている空き家があれば、まずはご相談ください。</p>
+      cta.innerHTML = `<p class="tab-cta-title"><span class="nb">条件に合う空き家を、</span><span class="nb">お持ちではありませんか？</span></p>
+        <p class="tab-cta-body"><span class="nb">Tsumuieでは、</span><span class="nb">入居希望者に合わせて</span><span class="nb">空き家を探しています。</span><br><span class="nb">使い道に迷っている空き家があれば、</span><span class="nb">まずはご相談ください。</span></p>
         <a href="https://sottodesign0-hub.github.io/Tsumuieorner/register/" target="_blank" rel="noopener" class="btn btn-orange">空き家を登録・相談する</a>
         <a href="https://sottodesign0-hub.github.io/Tsumuieorner/" target="_blank" rel="noopener" class="btn btn-ghost">オーナー向けの説明を見る</a>`;
     }

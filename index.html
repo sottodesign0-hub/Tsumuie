@@ -385,6 +385,8 @@
     }
     .imagine-scene-nowrap { white-space: nowrap; font-size: clamp(.68rem, 2.3vw, 1.05rem); overflow-wrap: break-word; }
     .mob-nowrap { white-space: nowrap; }
+    /* 文節単位で折り返す（語中改行を防ぐ）ユーティリティ */
+    .nb { display: inline-block; }
     .imagine-bottom {
       border-top: 1px solid rgba(255,255,255,.12); padding-top: 2rem;
       font-size: clamp(.65rem, 2.9vw, .92rem); color: rgba(255,255,255,.6); line-height: 1.9;
@@ -691,7 +693,7 @@
     <div>
       <span class="sec-label">物件を探す / Properties</span>
       <h2 class="sec-title"><img src="image/IMG_6493-tight.png" alt="Tsumuie" class="t-logo-img"></h2>
-      <p class="sec-desc">住まいを探している方も、空き家を活かしたい方も。<br>気になる方から、物件一覧で詳しくご覧いただけます。</p>
+      <p class="sec-desc"><span class="nb">住まいを探している方も、</span><span class="nb">空き家を活かしたい方も。</span><br><span class="nb">気になる方から、</span><span class="nb">物件一覧で詳しくご覧いただけます。</span></p>
     </div>
   </div>
 
@@ -782,7 +784,7 @@
   <div class="imagine-bg"></div>
   <div class="imagine-content">
     <span class="imagine-label">あなたの空き家が主役になる瞬間</span>
-    <h2 class="imagine-title">想像してみてください。<br><span class="mob-nowrap">ずっと静かだった<em>あの家</em>に明かりが灯り——</span></h2>
+    <h2 class="imagine-title">想像してみてください。<br><span class="nb">ずっと静かだった</span><span class="nb"><em>あの家</em>に明かりが灯り——</span></h2>
     <div class="imagine-scenes">
       <p class="imagine-scene">子どもの声が聞こえてくる。</p>
       <p class="imagine-scene">庭に小さな花が植えられる。</p>
